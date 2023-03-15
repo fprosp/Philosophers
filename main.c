@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/15 15:25:54 by fprosper         ###   ########.fr       */
+/*   Created: 2023/03/15 14:06:27 by fprosper          #+#    #+#             */
+/*   Updated: 2023/03/15 15:35:08 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <stdio.h>
-# include <pthread.h>
-# include <stdlib.h>
-# include <unistd.h> 
-
-
-typedef struct s_vars
+int main(int argc, char **argv)
 {
-	int argc;
-	char **argv;
-}	t_vars;
+	t_vars var;
+	t_philo philo;
 
-typedef struct s_philo
-{
-	int n_philo;
-	int time_to_die;
-	int time_to_eat;
-	int time_to_sleep;
-	int eat_count;
-}	t_philo;
-
-int	num_check(t_vars *var, s_philo *philo)
-
-#endif
+	var.argc = argc;
+	var.argv = argv;
+	if (num_check(&var, &philo) == 1)
+	{
+		printf("The inserted values are incorrect! Please retry");
+		return (1);
+	}
+	
+}
