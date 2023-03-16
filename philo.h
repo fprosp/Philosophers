@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/16 17:35:03 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:48:09 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_philo
 {
-	struct s_everyone	*everyone;
+	struct s_vars		*var;
 	int					id;
 	int					n_eat;
 	int					end;
@@ -34,6 +34,7 @@ typedef struct s_philo
 
 typedef struct s_vars
 {
+	t_philo	*philo;
 	int argc;
 	char **argv;
 	int n_philo;
@@ -41,7 +42,6 @@ typedef struct s_vars
 	int time_to_eat;
 	int time_to_sleep;
 	int eat_count;
-	t_philo	*philo;
 }	t_vars;
 
 int		var_check(t_vars *var);
