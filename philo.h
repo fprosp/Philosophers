@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/15 15:25:54 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:35:03 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,35 @@
 # include <stdio.h>
 # include <pthread.h>
 # include <stdlib.h>
-# include <unistd.h> 
+# include <unistd.h>
+# include <sys/time.h>
 
+typedef struct s_philo
+{
+	struct s_everyone	*everyone;
+	int					id;
+	int					n_eat;
+	int					end;
+	uint64_t			t_starteating;
+	pthread_t			thread;
+	pthread_mutex_t		*left;
+	pthread_mutex_t		*right;
+	pthread_mutex_t		strv_mutex;
+}	t_philo;
 
 typedef struct s_vars
 {
 	int argc;
 	char **argv;
-}	t_vars;
-
-typedef struct s_philo
-{
 	int n_philo;
 	int time_to_die;
 	int time_to_eat;
 	int time_to_sleep;
 	int eat_count;
-}	t_philo;
+	t_philo	*philo;
+}	t_vars;
 
-int	num_check(t_vars *var, s_philo *philo)
+int		var_check(t_vars *var);
+int		ft_atoi(const char *str);
 
 #endif
