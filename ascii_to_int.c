@@ -6,13 +6,13 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:34:23 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/20 15:05:17 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:18:33 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	controllo_spazi(const char *str, int i)
+int	space_check(const char *str, int i)
 {
 	while (*(str + i) == '\t' || *(str + i) == '\n' || *(str + i) == '\v' \
 		    || *(str + i) == '\f' || *(str + i) == '\r' || *(str + i) == ' ')
@@ -29,7 +29,7 @@ int	ascii_to_int(const char *str)
 	i = 0;
 	segno = 1;
 	result = 0;
-	i = controllo_spazi(str, i);
+	i = space_check(str, i);
 	if (*(str + i) == '-' || *(str + i) == '+')
 	{
 		if (*(str + i) == '-')
