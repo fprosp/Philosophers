@@ -6,9 +6,10 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 15:24:08 by fprosper          #+#    #+#              #
-#    Updated: 2023/03/15 15:25:05 by fprosper         ###   ########.fr        #
+#    Updated: 2023/03/20 14:34:59 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.c num_check.c
 
+PROG_NAME	
