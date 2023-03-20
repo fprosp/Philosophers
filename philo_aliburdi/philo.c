@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 20:22:21 by aliburdi          #+#    #+#             */
-/*   Updated: 2023/03/20 17:21:22 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:35:11 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	start(t_everyone *everyone)
 	i = -1;
 	everyone->start_time = ft_get_time();
 	while (++i < everyone->n_ph)
-		pthread_create(&everyone->philo[i].thread, NULL , ft_routine, &everyone->philo[i]);
+		pthread_create(&everyone->philo[i].thread, NULL , ft_routine, &everyone->philo[i]); // Crea i Threads
 	ft_death(everyone, -1, 0);
 	i = -1;
 	while (++i < everyone->n_ph)
