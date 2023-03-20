@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:30:26 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/20 15:47:48 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:56:50 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,23 @@ int var_assign(t_vars *var)
 {
     var->n_philo = ascii_to_int(var->argv[1]);
     if (var->n_philo > 200 || var->n_philo <= 0)
-        return (1);
+        return (EXIT_FAILURE);
     var->time_to_die = ascii_to_int(var->argv[2]);
 	if (var->time_to_die < 0)
-		return (1);
+		return (EXIT_FAILURE);
     var->time_to_eat = ascii_to_int(var->argv[3]);
 	if (var->time_to_eat < 0)
-		return (1);
+		return (EXIT_FAILURE);
     var->time_to_sleep = ascii_to_int(var->argv[4]);
     if (var->time_to_sleep < 0)
-        return (1);
+        return (EXIT_FAILURE);
     if (var->argc == 6)
         var->eat_count = ascii_to_int(var->argv[5]);
         if (var->eat_count < 7)
-            return (1);
+            return (EXIT_FAILURE);
 	else
 		var->eat_count = -1;
-    return (0);
+    return (EXIT_SUCCESS);
 }
 
 int num_check(t_vars *var)
