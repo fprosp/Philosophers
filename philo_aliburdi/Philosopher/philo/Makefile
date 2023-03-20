@@ -3,34 +3,34 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
+#    By: aliburdi <aliburdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/15 15:24:08 by fprosper          #+#    #+#              #
-#    Updated: 2023/03/20 15:04:19 by fprosper         ###   ########.fr        #
+#    Created: 2023/02/14 23:40:00 by mmariani          #+#    #+#              #
+#    Updated: 2023/02/16 04:26:50 by aliburdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROG_NAME = philo
-PROG_MAIN = main.c
-FUNC = check_n_get.c ascii_to_int.c
-FUNC_OBJS = $(FUNC:.c=.o)
+NAME = philo
+
+SRCS = philo.c mutex.c action.c routine.c utils.c death.c check.c
+
+OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror 
-RM = rm -f
 
-$(PROG_NAME):		$(FUNC_OBJS)
-					$(CC) $(CFLAGS) -o $(PROG_NAME) $(FUNC_OBJS) $(PROG_MAIN)
+FLAGS = -Wall -Werror -Wextra #-fsanitize=address -g3
 
-all:				
-					$(PROG_NAME)
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(SRCS) -pthread -o $(NAME)
 
-clean:				
-					$(RM) $(FUNC_OBJS)
+all: $(NAME)
 
-fclean:				clean
-					$(RM) $(FUNC_OBJS) $(PROG_NAME)
+clean:
+	rm -f $(OBJS)
 
-re:					fclean all
+fclean: clean
+	rm -f $(NAME)
 
-.PHONY:				all clean fcelan re
+re: fclean all
+
+.PHONY: all clean fclean re

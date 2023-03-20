@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/16 18:48:09 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:13:47 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_vars
 	int eat_count;
 }	t_vars;
 
-int		var_check(t_vars *var);
-int		ft_atoi(const char *str);
+int		check_n_get(t_vars *var);
+int		ascii_to_int(const char *str);
 
 #endif

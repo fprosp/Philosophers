@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ascii_to_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:34:23 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/16 17:34:37 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:05:17 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	controllo_spazi(const char *str, int i)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+int	ascii_to_int(const char *str)
 {
 	int	result;
 	int	i;
