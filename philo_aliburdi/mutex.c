@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:35:37 by aliburdi          #+#    #+#             */
-/*   Updated: 2023/03/21 16:34:17 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:41:14 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,22 @@ int	ft_initmutex(t_everyone *everyone)
 	return (0);
 }
 
+int	ft_check_mutex(int flag, t_philo *philo)
+{
+	int	tmp;
+
+	tmp = 0;
+	if (flag == 0)
+	{
+		pthread_mutex_lock(&philo->everyone->die_mutex);
+		tmp = philo->everyone->some_die;
+		pthread_mutex_unlock(&philo->everyone->die_mutex);
+	}
+	else if (flag == 1)
+	{
+		pthread_mutex_lock(&philo->everyone->eat_mutex);
+		tmp = philo->end;
+		pthread_mutex_unlock(&philo->everyone->eat_mutex);
+	}
+	return (tmp);
+}

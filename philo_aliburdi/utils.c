@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:35:47 by aliburdi          #+#    #+#             */
-/*   Updated: 2023/03/21 16:34:47 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:41:18 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ long long	ft_atoi(const char *str)
 	return (ret * sign);
 }
 
+void	ft_sleep(uint64_t time)
+{
+	uint64_t	tmp;
+
+	tmp = ft_get_time();
+	usleep(time * 1000 - 20000);
+	while (ft_get_time() < tmp + time)
+		continue ;
+}
+
+void	ft_philo_msg(t_philo *ph, int id, char *str)
+{
+	pthread_mutex_lock(&ph->everyone->lock);
+	printf("%llu", ft_get_time() - ph->everyone->start_time);
+	printf(" %d %s\n", id, str);
+	pthread_mutex_unlock(&ph->everyone->lock);
+}
 
 uint64_t	ft_get_time(void)
 {
