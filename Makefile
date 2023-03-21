@@ -6,14 +6,14 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 15:24:08 by fprosper          #+#    #+#              #
-#    Updated: 2023/03/20 15:49:26 by fprosper         ###   ########.fr        #
+#    Updated: 2023/03/20 18:21:48 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROG_NAME = philo
 PROG_MAIN = main.c
-FUNC = check_get_init.c ascii_to_int.c
-FUNC_OBJS = $(FUNC:.c=.o)
+FUNCS = check_get_init.c ascii_to_int.c
+FUNC_OBJS = $(FUNCS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror 

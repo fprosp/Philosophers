@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/20 17:20:30 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/21 15:06:32 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_vars
 	int time_to_die;
 	int time_to_eat;
 	int time_to_sleep;
-	int eat_count;
+	int eat_cycle_count;
 	uint64_t		start_time;
 }	t_vars;
 
