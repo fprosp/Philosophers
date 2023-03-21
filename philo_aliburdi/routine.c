@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:35:11 by aliburdi          #+#    #+#             */
-/*   Updated: 2023/03/21 16:41:10 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:52:07 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	*ft_routine(void *phil)
 	philo = phil;
 	if (philo->id % 2 == 0)
 		ft_sleep(60);
-	while (ft_check_mutex(0, philo))
+	while (ft_check_mutex(0, philo) != 0)
 	{	
-		if (ft_take_forks(philo))
+		if (ft_take_forks(philo) != 0)
 			return (NULL);
 		timestarteating(philo);
 		if (ft_check_mutex(0, philo))

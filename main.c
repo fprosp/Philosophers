@@ -6,31 +6,17 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:06:27 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/21 16:32:39 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:04:00 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void life_routine(void *philo_ptr)
-{
-	t_philo *philo;
-	
-	philo = (t_philo*) philo_ptr;
-	if (philo->philo_id % 2 != 0)
-		ft_sleep(60);
-	
-	return ;
-}
-
 void phtread_life(t_vars *var)
 {
 	int	i;
-	uint64_t time;
-	struct timeval	tv;
 
-	gettimeofday(&tv, NULL);
-	var->start_time = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000;
+	var->start_time = ft_get_time();
 	i = 0;
 	while (i < var->n_philo)
 	{
