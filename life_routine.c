@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 18:59:09 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/21 17:04:51 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:12:36 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ void life_routine(void *philo_ptr)
 	
 	return ;
 }
-
