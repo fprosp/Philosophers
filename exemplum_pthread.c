@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exemplum_pthread.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/22 15:18:34 by fprosper          #+#    #+#             */
+/*   Updated: 2023/03/22 15:18:37 by fprosper         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <pthread.h>
 #include <stdio.h>
 # include <stdlib.h>
 #define NUM_THREADS 5
+
 int N = 0;
 
 void *start_routine(void *threadid) // Viene eseguite all'interno di ogni thread creato. 
