@@ -6,13 +6,13 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 15:24:08 by fprosper          #+#    #+#              #
-#    Updated: 2023/03/22 13:00:36 by fprosper         ###   ########.fr        #
+#    Updated: 2023/03/24 17:25:29 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROG_NAME = philo
 PROG_MAIN = main.c
-FUNCS = check_get_init.c ascii_to_int.c
+FUNCS = check_get_init.c routine.c sleep.c
 FUNC_OBJS = $(FUNCS:.c=.o)
 
 CC = gcc
