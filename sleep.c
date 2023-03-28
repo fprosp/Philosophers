@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:18:58 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/24 17:35:46 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:15:06 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,4 @@ void	ft_sleep(uint64_t time)
 	while (ft_get_time() < tmp + time)
 		continue ;
 }
+
