@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:35:11 by aliburdi          #+#    #+#             */
-/*   Updated: 2023/03/21 16:52:07 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:23:13 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	*ft_routine(void *phil)
 	philo = phil;
 	if (philo->id % 2 == 0)
 		ft_sleep(60);
-	while (ft_check_mutex(0, philo) != 0)
-	{	
+	while (ft_check_mutex(0, philo) != 0) // Esegue la routine fintanto che tutti i filosofi sono vivi
+	{
 		if (ft_take_forks(philo) != 0)
 			return (NULL);
 		timestarteating(philo);
-		if (ft_check_mutex(0, philo))
+		if (ft_check_mutex(0, philo) != 0)
 		{
 			ft_philo_msg(philo, philo->id, "is eating 🍽");
 			ft_sleep(philo->everyone->tt_eat);

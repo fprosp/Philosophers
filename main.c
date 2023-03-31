@@ -6,13 +6,25 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:06:27 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/24 17:11:49 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:52:16 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int philos_cycle_life(t_vrbs *var)
+
+void routine(void *philo_ptr)
+{
+	t_philo *philo;
+
+	philo = (t_philo*)philo_ptr;
+	if (philo->philo_id % 2 == 0)
+		ft_sleep(60);
+	
+	
+}
+
+int philos_cycle_life(t_var *var)
 {
 	int	i;
 
@@ -30,7 +42,7 @@ int philos_cycle_life(t_vrbs *var)
 
 int main(int argc, char **argv)
 {
-	t_vrbs var;
+	t_var var;
 
 	var.argc = argc;
 	var.argv = argv;

@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/03/24 17:47:47 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:55:15 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_philo
 {
-	struct s_vrbs		*var;
+	struct s_var		*var;
 	int					philo_id;
 	int					n_meal;
 	uint64_t			t_starteating;
@@ -33,7 +33,7 @@ typedef struct s_philo
 	int					the_end;
 }	t_philo;
 
-typedef struct s_vrbs
+typedef struct s_var
 {
 	t_philo				*philo;
 	pthread_mutex_t		*forks;
@@ -45,13 +45,13 @@ typedef struct s_vrbs
 	int 				time_to_sleep;
 	int 				eat_cycle_count;
 	uint64_t			start_time;
-}	t_vrbs;
+}	t_var;
 
 int			check_get_init(t_vrbs *var);
 void		life_routine(void *philo_ptr);
 uint64_t	ft_get_time(void);
 void		ft_usleep(uint64_t time);
-void		routine(void *philo_ptr);
+void		life_cycle(void *philo_ptr);
 
 
 #endif
