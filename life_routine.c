@@ -6,11 +6,24 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:41:00 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/03 14:57:01 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/03 18:36:35 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	take_forks(t_philo *philo)
+{
+	pthread_mutex_lock(philo->fork_sx);
+	if (ft_check_mutex(0, philo) != 0)
+		ft_philo_msg(philo, philo->philo_id, "has taken a fork");
+	if (philo->var->n_philo == 1)
+		return (1);
+	pthread_mutex_lock(philo->fork_dx);
+	if (ft_check_mutex(0, philo))
+		ft_philo_msg(philo, philo->philo_id, "has taken a fork");
+	return (0);
+}
 
 int death_rele(int i, t_philo *philo)
 {
@@ -20,13 +33,13 @@ int death_rele(int i, t_philo *philo)
 	if (i == 0)
 	{
 		pthread_mutex_lock(&philo->var->death);
-		tmp = philo->var->death_var;
+		tmp = philo->var->death_var; // == 1
 		pthread_mutex_unlock(&philo->var->death);
 	}
 	else if (i == 1)
 	{
 		pthread_mutex_lock(&philo->var->eat);
-		tmp = philo->fine;
+		tmp = philo->fine; // == 0
 		pthread_mutex_unlock(&philo->var->eat);
 	}
 	return (tmp);
@@ -41,6 +54,8 @@ void life_routine(void *philo_ptr)
 		ft_sleep(60);
 	while (death_rele(0, philo) != 0)
 	{
+		if (take_forks(philo))
+			return (EXIT_FAILURE);
 		
 	}
 	return (EXIT_SUCCESS);

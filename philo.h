@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/03 14:43:43 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/03 18:02:06 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ typedef struct s_var
 int			check_get_init(t_var *var);
 void		life_routine(void *philo_ptr);
 int			free_fork(t_var *var);
-int			free_all(t_var *var);
 int 		free_struct(t_var *var);
+int			free_all(t_var *var);
 
 uint64_t	ft_get_time(void);
 void		edit_usleep(uint64_t time);
