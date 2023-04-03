@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleep.c                                            :+:      :+:    :+:   */
+/*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 17:18:58 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/03 11:50:11 by fprosper         ###   ########.fr       */
+/*   Created: 2023/04/03 13:33:37 by fprosper          #+#    #+#             */
+/*   Updated: 2023/04/03 14:16:04 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-uint64_t	ft_get_time(void)
+int ft_atoi(char *str)
 {
-	struct timeval	tv;
+	int	sum;
+	int	sign;
+	int	found;
 
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec) * 1000 + (tv.tv_usec) / 1000);
+	sum = 0;
+	sign = 1;
+	found = 1;
+	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f' || *str == '\r')
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str && found)
+	{
+		if (*str >= '0' && *str <= '9')
+			sum = sum * 10 + *str - '0';
+		else
+			found = 0;
+		str++;
+	}
+	return (sign * sum);
 }
-
-void	edit_sleep(uint64_t time)
-{
-	uint64_t	tmp;
-
-	tmp = ft_get_time();
-	usleep(time * 1000 - 20000);
-	while (ft_get_time() < tmp + time)
-		continue ;
-}
-
