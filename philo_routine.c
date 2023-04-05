@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   life_routine.c                                     :+:      :+:    :+:   */
+/*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:41:00 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/03 18:36:35 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:54:09 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int death_rele(int i, t_philo *philo)
 	return (tmp);
 }
 
-void life_routine(void *philo_ptr)
+void philo_routine(void *philo_ptr)
 {
 	t_philo *philo;
 
