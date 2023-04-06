@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/05 13:54:15 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/06 11:12:00 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+# define DEATH_SUCCESS 1
+# define DEATH_FAILURE 0;
 
 typedef struct s_philo
 {
