@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:39:17 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/07 16:40:49 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:38:06 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int death_check(int i, t_philo *philo)
 	if (i == 0)
 	{
 		pthread_mutex_lock(&philo->vars->death);
-		tmp = philo->vars->death_var; // == 1
+		tmp = philo->vars->death_var;
 		pthread_mutex_unlock(&philo->vars->death);
 	}
 	else if (i == 1)
 	{
 		pthread_mutex_lock(&philo->vars->eat);
-		tmp = philo->end; // == 0
+		tmp = philo->end;
 		pthread_mutex_unlock(&philo->vars->eat);
 	}
 	return (tmp);
