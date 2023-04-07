@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/07 16:40:58 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:33:43 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_vars
 	int 				tt_die;
 	int 				n_to_eat;
 	int 				eat_var;
+	int					some_die;
+	int					all_ate;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		eat;
 	pthread_mutex_t		death;
@@ -63,5 +65,6 @@ int			free_all(t_vars *vars);
 
 uint64_t	get_milli_time(void);
 void		ppause(uint64_t time);
+void	death(t_vars *vars, int i, long long tmp);
 
 #endif
