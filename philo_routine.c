@@ -5,12 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 17:41:00 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/06 12:13:22 by fprosper         ###   ########.fr       */
+/*   Created: 2023/04/07 16:39:17 by fprosper          #+#    #+#             */
+/*   Updated: 2023/04/07 16:40:49 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	print(t_philo *ph, int id, char *str)
+{
+	pthread_mutex_lock(&ph->vars->lock);
+	printf("%llu", get_milli_time() - ph->vars->start_time);
+	printf(" %d %s\n", id, str);
+	pthread_mutex_unlock(&ph->vars->lock);
+}
 
 int death_check(int i, t_philo *philo)
 {
@@ -19,29 +27,41 @@ int death_check(int i, t_philo *philo)
 	tmp = 0;
 	if (i == 0)
 	{
-		pthread_mutex_lock(&philo->var->death);
-		tmp = philo->var->death_var; // == 1
-		pthread_mutex_unlock(&philo->var->death);
+		pthread_mutex_lock(&philo->vars->death);
+		tmp = philo->vars->death_var; // == 1
+		pthread_mutex_unlock(&philo->vars->death);
 	}
 	else if (i == 1)
 	{
-		pthread_mutex_lock(&philo->var->eat);
-		tmp = philo->fine; // == 0
-		pthread_mutex_unlock(&philo->var->eat);
+		pthread_mutex_lock(&philo->vars->eat);
+		tmp = philo->end; // == 0
+		pthread_mutex_unlock(&philo->vars->eat);
 	}
 	return (tmp);
 }
 
-int	take_forks(t_philo *philo)
+void	 oth_act(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->fork_dx);
+	pthread_mutex_unlock(philo->fork_sx);
+	if (death_check(0, philo) != 0)
+		ft_philo_msg(philo, philo->philo_id, "is sleeping ");
+	if (death_check(0, philo) != 0)
+		ft_sleep(philo->vars->tt_sleep);
+	if (death_check(0, philo))
+		ft_philo_msg(philo, philo->philo_id, "is thinking ");
+}
+
+int	get_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->fork_sx);
 	if (death_check(0, philo) != DEATH_SUCCESS)
-		ft_philo_msg(philo, philo->philo_id, "has taken a fork");
-	if (philo->var->n_philo == 1)
+		print(philo, philo->philo_id, "has taken a fork");
+	if (philo->vars->n_philos == 1)
 		return (EXIT_FAILURE);
 	pthread_mutex_lock(philo->fork_dx);
 	if (death_check(0, philo) != DEATH_SUCCESS)
-		ft_philo_msg(philo, philo->philo_id, "has taken a fork");
+		print(philo, philo->philo_id, "has taken a fork");
 	return (0);
 }
 
@@ -51,12 +71,25 @@ void philo_routine(void *philo_ptr)
 
 	philo = (t_philo*)philo_ptr;
 	if (philo->philo_id % 2 == 0)
-		ft_sleep(60);
+		ppause(60);
 	while (death_check(0, philo) != DEATH_SUCCESS)
 	{
-		if (take_forks(philo) != EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		
+		if (get_forks(philo) != 0)
+			return (NULL);
+		get_time_eat(philo);
+		if (death_check(0, philo) != 0)
+		{
+			print(philo, philo->philo_id, "is eating ");
+			ppause(philo->vars->tt_eat);
+		}
+		philo->n_meal++;
+		if (philo->n_meal == philo->vars->n_to_eat)
+		{
+			pthread_mutex_lock(&philo->vars->eat_mutex);
+			philo->end = 1;
+			pthread_mutex_unlock(&philo->vars->eat_mutex);
+		}
+		oth_act(philo);
 	}
 	return (EXIT_SUCCESS);
 }
