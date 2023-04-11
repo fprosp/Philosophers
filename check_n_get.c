@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:30:26 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/07 16:30:32 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:52:25 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@ int philo_init(t_vars *vars)
 
 	vars->philo = (t_philo *)malloc(sizeof(t_philo) * vars->n_philos);
 	if (!vars->philo)
-		return (free_fork(vars));
+	{
+		free(vars->forks);
+		return (EXIT_FAILURE);
+	}
 	i = -1;
 	while (++i < vars->n_philos)
 	{
 		vars->philo[i].philo_id = i + 1;
-		vars->philo[i].n_pasti = 0;
-		vars->philo[i].fine = 0;
+		vars->philo[i].n_meal = 0;
+		vars->philo[i].end = 0;
 		vars->philo[i].t_start_eat = 0;
-		vars->philo[i].eat_var = vars;
+		vars->philo[i].vars = vars;
 		pthread_mutex_init(&vars->philo[i].strv_mutex, NULL);
 		vars->philo[i].fork_sx = &vars->forks[i];
 		vars->philo[i].fork_dx = &vars->forks[i + 1];
@@ -46,7 +49,7 @@ int var_mutex_init(t_vars *vars)
 	i = -1;
 	while (++i < vars->n_philos)
 		pthread_mutex_init(&vars->forks[i], NULL);
-	pthread_mutex_init(&vars->death NULL);
+	pthread_mutex_init(&vars->death, NULL);
 	pthread_mutex_init(&vars->lock, NULL);
 	pthread_mutex_init(&vars->eat, NULL);
 	pthread_mutex_init(&vars->philo_time, NULL);
@@ -71,13 +74,11 @@ int argv_assign(t_vars *vars)
 	if (vars->tt_sleep < 0)
 		return (EXIT_FAILURE);
 	if (vars->argc == 6)
-	{
-		vars->eat_cycle_count = ft_atoi(vars->argv[5]);
-		if (vars->eat_cycle_count < 7)
-			return (EXIT_FAILURE);
-	}
+		vars->meal_limit = ft_atoi(vars->argv[5]);
+	else
+		vars->meal_limit = -1;
 	vars->eat_var = 1;
-	vars->death_var = 1;
+	vars->some_die = 1;
 	return (EXIT_SUCCESS);
 }
 

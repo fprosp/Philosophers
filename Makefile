@@ -6,18 +6,18 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 15:24:08 by fprosper          #+#    #+#              #
-#    Updated: 2023/04/07 17:33:02 by fprosper         ###   ########.fr        #
+#    Updated: 2023/04/11 15:01:53 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROG_NAME = philo
 PROG_MAIN = main.c
-FUNCS 		=  	check_n_get.c free_gest.c time_gest.c philo_routine.c deaths.c \
-				atoi.c
+FUNCS = check_n_get.c free_gest.c time_gest.c philo_routine.c deaths.c \
+				atoi.c print.c
 FUNC_OBJS = $(FUNCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -lpthread
+CFLAGS = -Wall -Wextra -Werror 
 RM = rm -f
 
 $(PROG_NAME):		$(FUNC_OBJS)

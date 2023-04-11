@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:14:46 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/07 17:33:43 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:52:02 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
-# define DEATH_SUCCESS 1
-# define DEATH_FAILURE 0
+# define DEATH_SUCCESS 0
+# define DEATH_FAILURE 1
 
 typedef struct s_philo
 {
@@ -37,15 +37,14 @@ typedef struct s_philo
 typedef struct s_vars
 {
 	t_philo				*philo;
-	uint64_t			start_time;
 	int 				argc;
 	char				**argv;
-	int 				death_var;
 	int	 				n_philos;
-	int 				tt_eat;
-	int 				tt_sleep;
-	int 				tt_die;
-	int 				n_to_eat;
+	uint64_t			start_time;
+	uint64_t 			tt_eat;
+	uint64_t 			tt_sleep;
+	uint64_t 			tt_die;
+	int 				meal_limit;
 	int 				eat_var;
 	int					some_die;
 	int					all_ate;
@@ -57,14 +56,20 @@ typedef struct s_vars
 	pthread_mutex_t		lock;
 }	t_vars;
 
-int			check_get_init(t_vars *vars);
-void		philo_routine(void *philo_ptr);
+int			check_n_get(t_vars *vars);
+void		*philo_routine(void *philo_ptr);
+void		eat_time(t_philo *philo);
+uint64_t	get_ms_time(void);
+void		get_pause(uint64_t time);
+int			ft_atoi(char *str);
+int			death_check(int i, t_philo *philo);
 int			free_fork(t_vars *vars);
-int 		free_struct(t_vars *vars);
+void 		free_structs(t_vars *vars);
+void 		free_mutex(t_vars *vars);
 int			free_all(t_vars *vars);
-
-uint64_t	get_milli_time(void);
-void		ppause(uint64_t time);
-void	death(t_vars *vars, int i, long long tmp);
+void		print_info(t_philo *ph, int id, char *str);
+void		print_death(t_philo *ph, int id, char *str);
+void		death(t_vars *vars, int i, long long tmp);
+int			death_check(int i, t_philo *philo);
 
 #endif

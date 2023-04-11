@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:06:27 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/07 17:34:03 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:50:43 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ int main(int argc, char **argv)
 	vars.argv = argv;
 	if (check_n_get(&vars) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
-	vars.start_time = get_milli_time();
+	vars.start_time = get_ms_time();
 	i = -1;
 	while (++i < vars.n_philos)
-		if (pthread_create(vars.philo[i].ph_thread, NULL, philo_routine, &vars.philo[i]) != EXIT_SUCCESS)
-			return (free_all(&vars));
-	deaths(vars, -1, 0);
+		pthread_create(&vars.philo[i].ph_thread, NULL, philo_routine, &vars.philo[i]);
+	death(&vars, -1, 0);
 	i = -1;
 	while (++i < vars.n_philos)
 		pthread_join(vars.philo[i].ph_thread, NULL);
