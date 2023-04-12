@@ -6,13 +6,13 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:33:37 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/03 14:16:04 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:26:22 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int	sum;
 	int	sign;
@@ -21,7 +21,8 @@ int ft_atoi(char *str)
 	sum = 0;
 	sign = 1;
 	found = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f' || *str == '\r')
+	while (*str == ' ' || *str == '\t' || *str == '\n' \
+		|| *str == '\f' || *str == '\r')
 		str++;
 	if (*str == '-')
 		sign = -1;

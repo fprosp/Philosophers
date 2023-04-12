@@ -6,31 +6,11 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:40:09 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/11 18:48:51 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:11:23 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int death_check(int i, t_philo *philo)
-{
-	int	tmp;
-
-	tmp = 0;
-	if (i == 0)
-	{
-		pthread_mutex_lock(&philo->vars->death);
-		tmp = philo->vars->some_die;
-		pthread_mutex_unlock(&philo->vars->death);
-	}
-	else if (i == 1)
-	{
-		pthread_mutex_lock(&philo->vars->eat);
-		tmp = philo->end;
-		pthread_mutex_unlock(&philo->vars->eat);
-	}
-	return (tmp);
-}
 
 void	philokill(t_vars *vars)
 {

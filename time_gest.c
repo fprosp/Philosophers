@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:18:58 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/11 14:52:52 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:25:49 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ void	get_pause(uint64_t time)
 	while (get_ms_time() < tmp + time)
 		continue ;
 }
-

@@ -6,15 +6,15 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:30:26 by fprosper          #+#    #+#             */
-/*   Updated: 2023/04/11 18:52:25 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:23:29 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int philo_init(t_vars *vars)
+int	philo_init(t_vars *vars)
 {
-	int i;
+	int	i;
 
 	vars->philo = (t_philo *)malloc(sizeof(t_philo) * vars->n_philos);
 	if (!vars->philo)
@@ -39,11 +39,12 @@ int philo_init(t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-int var_mutex_init(t_vars *vars)
+int	var_mutex_init(t_vars *vars)
 {
-	int i;
+	int	i;
 
-	vars->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * vars->n_philos);
+	vars->forks = (pthread_mutex_t *)malloc(sizeof \
+					(pthread_mutex_t) * vars->n_philos);
 	if (!vars->forks)
 		return (EXIT_FAILURE);
 	i = -1;
@@ -56,9 +57,9 @@ int var_mutex_init(t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-int argv_assign(t_vars *vars)
+int	argv_assign(t_vars *vars)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	vars->n_philos = ft_atoi(vars->argv[1]);
@@ -82,10 +83,10 @@ int argv_assign(t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-int argv_check(t_vars *vars)
+int	argv_check(t_vars *vars)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (i < vars->argc)
@@ -93,7 +94,7 @@ int argv_check(t_vars *vars)
 		j = 0;
 		while (vars->argv[i][j] != '\0')
 		{
-			if ((int)vars->argv[i][j] < (int)'0' && (int)vars->argv[i][j] > (int)'9')
+			if ((int)vars->argv[i][j] < '0' && (int)vars->argv[i][j] > '9')
 				return (EXIT_FAILURE);
 			j++;
 		}
@@ -102,7 +103,7 @@ int argv_check(t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-int check_n_get(t_vars *vars)
+int	check_n_get(t_vars *vars)
 {
 	if (vars->argc < 5 || vars->argc > 6)
 		return (printf("ERROR! Invalid number of values! \
@@ -115,7 +116,8 @@ Please reload and try again"));
 	if (argv_assign(vars) != EXIT_SUCCESS)
 		return (printf("ERROR! The inserted value are out of range! \
 Please reload and try again"));
-	if (var_mutex_init(vars) != EXIT_SUCCESS || philo_init(vars) != EXIT_SUCCESS)
+	if (var_mutex_init(vars) != EXIT_SUCCESS \
+		|| philo_init(vars) != EXIT_SUCCESS)
 		return (printf("ERROR! Wrong memory alloc! \
 Please reload and try again"));
 	return (EXIT_SUCCESS);
